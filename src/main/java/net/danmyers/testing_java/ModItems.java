@@ -15,14 +15,15 @@ import java.util.Map;
 
 public class ModItems {
 
-    public static Item register(Item item, RegistryKey<Item> registryKey) {
-        Item registeredItem = Registry.register(Registries.ITEM, registryKey.getValue(), item);
-        return registeredItem;
-    }
 
     private static final List<String> ingredients = List.of(
         "suspicious_substance"
     );
+
+    public static Item register(Item item, RegistryKey<Item> registryKey) {
+        Item registeredItem = Registry.register(Registries.ITEM, registryKey.getValue(), item);
+        return registeredItem;
+    }
     
     public static final Map<String, RegistryKey<Item>> INGREDIENT_KEYS = new HashMap<>();
     public static final Map<String, Item> INGREDIENT_ITEMS = new HashMap<>();
