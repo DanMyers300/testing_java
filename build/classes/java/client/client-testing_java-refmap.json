@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "net/danmyers/testing_java/mixin/client/ExampleClientMixin": {
+      "run": "Lnet/minecraft/class_310;method_1514()V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "net/danmyers/testing_java/mixin/client/ExampleClientMixin": {
+        "run": "Lnet/minecraft/class_310;method_1514()V"
+      }
+    }
+  }
+}
