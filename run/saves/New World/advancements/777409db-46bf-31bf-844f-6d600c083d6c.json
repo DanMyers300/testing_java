@@ -11,5 +11,23 @@
     },
     "done": false
   },
+  "minecraft:recipes/decorations/campfire": {
+    "criteria": {
+      "has_coal": "2025-01-27 14:31:52 -0600"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/smoker": {
+    "criteria": {
+      "has_furnace": "2025-01-27 14:31:52 -0600"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/coal_block": {
+    "criteria": {
+      "has_coal": "2025-01-27 14:31:52 -0600"
+    },
+    "done": true
+  },
   "DataVersion": 4189
 }
