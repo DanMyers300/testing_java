@@ -18,8 +18,8 @@ public class ModItems {
     }
 
     public static void handleRegister(
-        List<String> itemList, Map<String,
-        RegistryKey<Item>> keyMap,
+        List<String> itemList,
+        Map<String,RegistryKey<Item>> keyMap,
         Map<String, Item> valueMap)
     {
         for (String name : itemList) {
