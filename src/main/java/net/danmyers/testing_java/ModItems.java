@@ -8,21 +8,47 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ItemGroups;
+import java.util.List;
+import java.util.Locale;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModItems {
+
     public static Item register(Item item, RegistryKey<Item> registryKey) {
         Item registeredItem = Registry.register(Registries.ITEM, registryKey.getValue(), item);
         return registeredItem;
     }
 
-    public static final RegistryKey<Item> SUSPICIOUS_SUBSTANCE_KEY = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TestingJava.MOD_ID, "suspicious_substance"));
-    public static final Item SUSPICIOUS_SUBSTANCE = register(
-        new Item(new Item.Settings().registryKey(SUSPICIOUS_SUBSTANCE_KEY)),
-        SUSPICIOUS_SUBSTANCE_KEY
+    private static final List<String> ingredients = List.of(
+        "suspicious_substance"
     );
+    
+    public static final Map<String, RegistryKey<Item>> INGREDIENT_KEYS = new HashMap<>();
+    public static final Map<String, Item> INGREDIENT_ITEMS = new HashMap<>();
+    
+    static {
+        for (String ingredient : ingredients) {
+            // Generate registry key
+            String keyName = ingredient.toUpperCase(Locale.ROOT) + "_KEY";
+            Identifier id = Identifier.of(TestingJava.MOD_ID, ingredient);
+            RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
+            INGREDIENT_KEYS.put(keyName, key);
+            
+            Item item = register(
+                new Item(new Item.Settings().registryKey(key)),
+                key
+            );
+            INGREDIENT_ITEMS.put(ingredient, item);
+        }
+    }
 
     public static void initialize() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
-            .register((itemGroup) -> itemGroup.add(ModItems.SUSPICIOUS_SUBSTANCE));
+            .register(entries -> {
+                for (Item item : INGREDIENT_ITEMS.values()) {
+                    entries.add(item);
+                }
+            });
     }
 }
