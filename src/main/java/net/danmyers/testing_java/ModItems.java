@@ -49,7 +49,6 @@ public class ModItems {
     };
 
     public static void makeFuel(String itemName, int burnTime) {
-        // Add the suspicious substance to the registry of fuels, with a burn time of 30 seconds.
         // Remember, Minecraft deals with logical based-time using ticks.
         // 20 ticks = 1 second.
         FuelRegistryEvents.BUILD.register((builder, context) -> {
